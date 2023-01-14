@@ -12,7 +12,7 @@ their own posts, as well as view other users posts. The application also utilize
 * nodemon, body-parser, express.js, express-validator 
 * jsonwebtoken 
 * mongodb, mongoose, mongoose-unique-validator 
-* multer uuid
+* multer, uuid
 
 **IMAGES:**
 
