@@ -6,7 +6,6 @@ import { redirect, useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [isLoginMode, setIsLoginMode] = useState(true);
-  const [isError, setIsError] = useState(false);
   const Login = useSelector((state) => state.login.login); //token
   const dispatch = useDispatch(); //dispatch
   const navigate = useNavigate();
@@ -61,27 +60,25 @@ const LoginForm = () => {
         password: enteredPass,
       }
     
-      fetch('http://localhost:5000/users/login', {
-      method: 'POST',
-      body: JSON.stringify(user),
-      headers: {
-        'Content-Type': 'application/json',
-      }, 
-    })
-      .then((response) => {
-        if (!response.ok) {
+      const responseData = await fetch('http://localhost:5000/users/login', {
+        method: 'POST',
+        body: JSON.stringify(user),
+        headers: {
+          'Content-Type': 'application/json',
+        }, });
+      
+        if (!responseData.ok) {
+          resetNameInput();
+    resetEmailInput();
+    resetPassInput();
           return;
-        }})
-      .then((data) => {
-        console.log(data.userId);     
-        dispatch(loginActions.setLogin(data.token)); //dispatch sin expiration al ser login, se encarga reducer
-        dispatch(loginActions.setLoginId(data.userId));
-        navigate("/feed");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    
+        }
+      
+       const data = await responseData.json(); 
+       dispatch(loginActions.setLogin(data.token)); //dispatch sin expiration al ser login, se encarga reducer
+       dispatch(loginActions.setLoginId(data.userId));
+       navigate("/feed");
+
     }
     else{  //SIGNUP
      
@@ -168,3 +165,57 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+
+
+/*
+
+if (isLoginMode) {    //LOGIN
+      const user = {
+        email: enteredEmail,
+        password: enteredPass,
+      }
+    
+      fetch('http://localhost:5000/users/login', {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json',
+      }, 
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return;
+        }})
+      .then((data) => {    
+        dispatch(loginActions.setLogin(data.token)); //dispatch sin expiration al ser login, se encarga reducer
+        dispatch(loginActions.setLoginId(data.userId));
+        navigate("/feed");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    
+    }
+    else{  //SIGNUP
+     
+      const user = {
+        name: enteredName,
+        email: enteredEmail,
+        password: enteredPass,
+      }
+
+      fetch('http://localhost:5000/users/signup', {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json',
+      }, 
+    }).then((response) => {
+      if (response.ok) {
+        console.log("Registrado");
+        setIsLoginMode(true);
+      }
+    });
+    }
+
+*/

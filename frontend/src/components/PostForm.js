@@ -118,7 +118,7 @@ const PostForm = () => {
               <img
                 alt="preview"
                 src={imagePrev}
-                className="h-full w-full rounded-3xl object-cover"
+                className=" h-80 w-full rounded-3xl object-cover"
               ></img>
             </div>
           )}
