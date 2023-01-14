@@ -1,4 +1,4 @@
-**Full Stack BlogApp using Mern** (MongoDB, Express.js, React and Node.js).
+**Full Stack BlogApp using Mern** (MongoDB, Express.js, React.js and Node.js).
 
 This application allows users to sign up and log in with secure authentication and validation. Once logged in, users can create, delete, and update 
 their own posts, as well as view other users posts. The application also utilizes JSON web tokens for login authentication and file upload capability.
