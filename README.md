@@ -5,7 +5,7 @@ their own posts, as well as view other users posts. The application also utilize
 
 **Frontend:**
 * Redux Toolkit
-* TailwindCSS (and heroIcons)
+* TailwindCSS 
 * ReactRouter V6
 
 **Backend:**
