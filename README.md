@@ -28,7 +28,7 @@ their own posts, as well as view other users posts. The application also utilize
 ![BlogFeed](https://user-images.githubusercontent.com/103704812/212439961-6f633441-ff50-4309-a493-f22c0e73f945.png)
 
 
-* Individual Post page.
+* Individual Post page
 
 ![BlogIndividual](https://user-images.githubusercontent.com/103704812/212439970-e68991aa-87e5-4142-90c7-473cfd0c7a34.png)
 
